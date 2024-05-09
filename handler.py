@@ -1,13 +1,67 @@
+# from langchain_core.callbacks.base import BaseCallbackHandler
+# from typing import Any, Dict, List
+# from websocket import create_connection  # You might use a different WebSocket library based on your setup
+#
+# class WebSocketCallbackHandler(BaseCallbackHandler):
+#     def __init__(self, websocket_url: str):
+#         self.ws = create_connection(websocket_url)
+#
+#     def on_llm_new_token(self, token: str, **kwargs: Any) -> None:
+#         """Send each new token via WebSocket."""
+#         self.ws.send(token)
+#
+#     def __del__(self):
+#         self.ws.close()
 
 
-<!DOCTYPE html>
+from __future__ import annotations
+import asyncio
+from typing import TYPE_CHECKING, Any, Dict, List
+from langchain_core.callbacks.base import BaseCallbackHandler
+
+if TYPE_CHECKING:
+    from langchain_core.agents import AgentAction, AgentFinish
+    from langchain_core.messages import BaseMessage
+    from langchain_core.outputs import LLMResult
+#
+# class AsyncQueueCallbackHandler(BaseCallbackHandler):
+#     def __init__(self):
+#         self.queue = asyncio.Queue()
+#
+#     async def on_llm_new_token(self, token: str, **kwargs: Any) -> None:
+#         """Place each new token into an async queue."""
+#         # await self.queue.put(token)
+#         print('recieved token: ', token)
+#         yield token
+#
+#     async def get_next_token(self) -> str:
+#         """Retrieve the next token from the queue."""
+#         return await self.queue.get()
+#
+#     def is_queue_empty(self) -> bool:
+#         """Check if the queue is empty."""
+#         return self.queue.empty()
+
+# ______________________________________________________________
+
+
+from langchain_core.callbacks import BaseCallbackHandler
+from langchain_core.prompts import ChatPromptTemplate
+# from langchain_openai import ChatOpenAI
+
+
+class MyCustomHandler(BaseCallbackHandler):
+    def on_llm_new_token(self, token: str, **kwargs) -> None:
+        print(f"My custom handler, token: {token}")
+        
+        
+        
+html = """<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <script src="https://cdn.socket.io/4.5.1/socket.io.min.js" integrity="sha384-3+C22C36XNpfs+hZuSzRMmSL3e3n5zwjWc8Ue3fCvRHX8nHl8bMfXbBG09Sr34M2" crossorigin="anonymous"></script>
-
-    <title>Code Assistant 🤖</title>
+    <title>Liqueous Assistant 🤖</title>
     <meta name="viewport" content="initial-scale=1, width=device-width" />
     <script src="https://unpkg.com/react@latest/umd/react.development.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/react-dom@latest/umd/react-dom.development.js"></script>
@@ -42,8 +96,8 @@
                 mode: 'dark'
             },
         });
+        const WS = new WebSocket("ws://localhost:8000/chat?sid=sid");
 
-        const WS = new WebSocket("ws://localhost:6789");
         function App() {
             const [response, setResponse] = React.useState("");
             const [question, setQuestion] = React.useState("");
@@ -63,7 +117,7 @@
                 <Container maxWidth="lg">
                     <Box sx={{ my: 4 }}>
                         <Typography variant="h4" component="h1" gutterBottom>
-                            Code Chatbot 🌻
+                            Liqueous Chatbot 🌻
                         </Typography>
                         <TextField
                             id="outlined-basic"
@@ -104,3 +158,4 @@
 </body>
 
 </html>
+"""

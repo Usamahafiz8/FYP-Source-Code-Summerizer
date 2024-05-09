@@ -6,3 +6,8 @@ fastappi
 httpx~=0.27.0
 uvicorn~=0.29.0
 fastapi~=0.111.0
+websocket
+flask
+flask_socketio
+python-dotenv~=1.0.1
+langchain~=0.1.17
