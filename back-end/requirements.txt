@@ -12,3 +12,4 @@ flask_socketio
 python-dotenv~=1.0.1
 langchain~=0.1.17
 markdown
+sqlalchemy

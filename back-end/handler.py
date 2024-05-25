@@ -22,44 +22,53 @@ from langchain_core.prompts import ChatPromptTemplate
 
 
 def create_specified_query(data: dict):
+    message = data['message']
     if data['tabId'] == 'content-summarizer':
-        context = f"""
+        context = """
          You are a very helpful assistant and your only job is to  `Summarize Code snippets of Python and Java programming language`.
          ###Instructions:\n
          * If the code provided by user is not in Python or JAVA language don't do that as its not your job.
          * If you get codes of Python or Java language you must do your job to your best knowledge and effort.
-         ### User's Code Snippet:\n
-         ```{data['message']}```
+         ### Preivious Chat History:\n
+            {chat_history}
+         ### User's Question:\n
+         ```{message}```
         """
         return context
     elif data['tabId'] == 'content-error':
-        context = f"""
+        context = """
          You are a very helpful assistant and your only job is to  `Detect errors in code snippets of Python and JAVA programming language`.
          ###Instructions:\n
          * If the code provided by user is not in Python or JAVA language don't do that as its not your job.
          * If you get codes of Python or Java language you must do your job to your best knowledge and effort.
-         ### User's Code Snippet:\n
-         ```{data['message']}```
+         ### Preivious Chat History:\n
+            {chat_history}
+         ### User's Question:\n
+         ```{message}```
         """
         return context
     elif data['tabId'] == 'content-comment':
-        context = f"""
+        context = """
          You are a very helpful assistant and your only job is to  `Provide comments to code snippets of Python and JAVA programming language`.
          ###Instructions:\n
          * If the code provided by user is not in Python or JAVA language don't do that as its not your job.
          * If you get codes of Python or Java language you must do your job to your best knowledge and effort.
-         ### User's Code Snippet:\n
-         ```{data['message']}```
+         ### Preivious Chat History:\n
+            {chat_history}
+         ### User's Question:\n
+         ```{message}```
         """
         return context
     elif data['tabId'] == 'content-customize':
-        context = f"""
+        context = """
          You are a very helpful assistant and your only job is to  `Customize the code snippets of Python and JAVA programming language`.
          ###Instructions:\n
          * If the code provided by user is not in Python or JAVA language don't do that as its not your job.
          * If you get codes of Python or Java language you must do your job to your best knowledge and effort.
-         ### User's Code Snippet:\n
-         ```{data['message']}```
+         ### Preivious Chat History:\n
+            {chat_history}
+         ### User's Question:\n
+         ```{message}```
         """
         return context
         

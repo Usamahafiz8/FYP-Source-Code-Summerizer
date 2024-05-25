@@ -139,30 +139,27 @@
                 gender: gender
             };
     
-            // try {
-                const response = await fetch("http://localhost:8001/signup", {
+            try {
+                const response = await fetch("http://localhost:8005/signup", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify(userData)
                 });
-                console.log("response: ", response)
-                console.log("resp.msg: ", response.message)
-                console.log('result json = ', response.json())
+    
                 const result = await response.json();
                 console.log("res: ", result)
-                if (result.message) {
-                    
+                if (result) {
+                    // response.text
                     alert(result.message);
                 } else {
                     alert("Error: " + result.detail);
                 }
-            // } 
-    //         catch (error) {
-    //             console.error("Error:", error);
-    //             alert("An error occurred. Please try again later.");
-    // }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("An error occurred. Please try again later.");
+        }
         });
     </script>
     

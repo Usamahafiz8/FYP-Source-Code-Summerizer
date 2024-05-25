@@ -1,7 +1,7 @@
 import json
 from handler import create_specified_query
 from fastapi import FastAPI, WebSocket, Request, WebSocketDisconnect
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 import os
@@ -11,7 +11,6 @@ from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain_core.callbacks import BaseCallbackHandler
 from fastapi import FastAPI, HTTPException, Depends
-
 from sqlalchemy.orm import Session
 from typing import List
 from database import SessionLocal, User
@@ -84,10 +83,10 @@ class UserLogin(BaseModel):
 def signup(user: UserCreate, db: Session = Depends(get_db)):
     
     if db.query(User).filter(User.userName == user.userName).first():
-       
+        # print('\nusername worked ')
         raise HTTPException(status_code=400, detail="Username already registered")
     if db.query(User).filter(User.email == user.email).first():
-        
+        # print('\n user email worked worked ')
         raise HTTPException(status_code=400, detail="Email already registered")
     
     # Create a new user
@@ -106,9 +105,10 @@ def signup(user: UserCreate, db: Session = Depends(get_db)):
         print('User created successfully')
         return {"message": "User created successfully"}
     else:
-        return JSONResponse(content={"message": "Password does not match."})
+        return {"message": "Password does not match."}
 
-
+# Endpoint for user login
+# Endpoint for user login
 @app.post("/login")
 def login(login_request: UserLogin, db: Session = Depends(get_db)):
     # Extract username and password from the request body
@@ -124,7 +124,7 @@ def login(login_request: UserLogin, db: Session = Depends(get_db)):
     if not user:
         raise HTTPException(status_code=401, detail="Invalid username or password")
     
-    return JSONResponse(content={"message": "Login successful"}) 
+    return {"message": "Login successful"}
 
 
 # --------------------------------chatbot API's----------------
@@ -181,4 +181,4 @@ async def websocket_endpoint(websocket: WebSocket):
 if __name__ == "__main__":
     import uvicorn
     
-    uvicorn.run(app, host = "localhost", port = 8001)
+    uvicorn.run(app, host = "localhost", port = 8005)

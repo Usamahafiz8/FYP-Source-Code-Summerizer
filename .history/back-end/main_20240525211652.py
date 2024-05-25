@@ -10,7 +10,6 @@ from langchain_community.llms import Ollama
 from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain_core.callbacks import BaseCallbackHandler
-from fastapi import FastAPI, HTTPException, Depends
 
 from sqlalchemy.orm import Session
 from typing import List
@@ -106,7 +105,7 @@ def signup(user: UserCreate, db: Session = Depends(get_db)):
         print('User created successfully')
         return {"message": "User created successfully"}
     else:
-        return JSONResponse(content={"message": "Password does not match."})
+        return {"message": "Password does not match."}
 
 
 @app.post("/login")
@@ -124,7 +123,7 @@ def login(login_request: UserLogin, db: Session = Depends(get_db)):
     if not user:
         raise HTTPException(status_code=401, detail="Invalid username or password")
     
-    return JSONResponse(content={"message": "Login successful"}) 
+    return {"message": "Login successful"}
 
 
 # --------------------------------chatbot API's----------------
@@ -181,4 +180,4 @@ async def websocket_endpoint(websocket: WebSocket):
 if __name__ == "__main__":
     import uvicorn
     
-    uvicorn.run(app, host = "localhost", port = 8001)
+    uvicorn.run(app, host = "localhost", port = 8006)

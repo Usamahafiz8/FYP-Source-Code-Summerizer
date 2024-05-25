@@ -106,7 +106,7 @@ def signup(user: UserCreate, db: Session = Depends(get_db)):
         print('User created successfully')
         return {"message": "User created successfully"}
     else:
-        return JSONResponse(content={"message": "Password does not match."})
+        return JSONResponse({"message": "Password does not match."})
 
 
 @app.post("/login")
@@ -181,4 +181,4 @@ async def websocket_endpoint(websocket: WebSocket):
 if __name__ == "__main__":
     import uvicorn
     
-    uvicorn.run(app, host = "localhost", port = 8001)
+    uvicorn.run(app, host = "localhost", port = 8006)

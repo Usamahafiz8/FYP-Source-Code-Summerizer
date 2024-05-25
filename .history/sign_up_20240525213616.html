@@ -140,7 +140,7 @@
             };
     
             // try {
-                const response = await fetch("http://localhost:8001/signup", {
+                const response = await fetch("http://localhost:8005/signup", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -149,7 +149,7 @@
                 });
                 console.log("response: ", response)
                 console.log("resp.msg: ", response.message)
-                console.log('result json = ', response.json())
+                console.log('result = ', res)
                 const result = await response.json();
                 console.log("res: ", result)
                 if (result.message) {
