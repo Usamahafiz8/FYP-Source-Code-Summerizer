@@ -1,119 +1,297 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Form | Source Code Summarizer</title>
-    <link rel="stylesheet" href="style2.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+  </head>
 
-<body>
-    <header>
-        <nav class="wrapper flex">
-            <h1>SOURCE CODE <br> <span>SUMMARIZER</span></h1>
+  <body class="bg-gray-100">
+    <header class="bg-white shadow">
+      <nav class="container mx-auto p-4 flex justify-between items-center">
+        <div class="flex items-center">
+          <h1 class="text-2xl font-bold">
+            SOURCE CODE <br />
+            <span class="text-indigo-600">SUMMARIZER</span>
+          </h1>
+        </div>
+        <div class="hidden md:flex items-center space-x-4">
+          <ul class="flex space-x-4">
+            <li>
+              <a href="index2.html" class="text-gray-700 hover:text-indigo-600"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a href="editor.html" class="text-gray-700 hover:text-indigo-600"
+                >Summarize Code</a
+              >
+            </li>
+            <li>
+              <a href="#about_us" class="text-gray-700 hover:text-indigo-600"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a href="doc.html" class="text-gray-700 hover:text-indigo-600"
+                >Documentation</a
+              >
+            </li>
+            <li>
+              <a
+                href="contact_form.html"
+                class="text-gray-700 hover:text-indigo-600"
+                >Contact</a
+              >
+            </li>
+          </ul>
+          <div class="flex space-x-4">
+            <a
+              href="sign_up.html"
+              class="bg-indigo-600 text-white px-4 py-2 rounded"
+              >Sign Up</a
+            >
+            <a
+              href="login.html"
+              class="bg-gray-600 text-white px-4 py-2 rounded"
+              >Login</a
+            >
+          </div>
+        </div>
+        <div class="md:hidden">
+          <button id="menu-btn" class="text-gray-700 focus:outline-none">
+            <ion-icon name="menu" size="large"></ion-icon>
+          </button>
+        </div>
+      </nav>
 
-            <ul class="flex">
-                <li><a href="index2.html">Home</a></li>
-                <li><a href="editor.html">Summarize Code</a></li>
-                <li><a href="#about_us">About Us</a></li>
-                <li><a href="doc.html">Documentation</a></li>
-                <li><a href="contact_form.html">Contact</a></li>
-            </ul>
-
-            <div class="user-actions">
-                <button class="signup-btn"><a href="sign_up.html">Sign Up</a></button>
-                <button class="login-btn"><a href="login.html">Login</a></button>
-            </div>
-
-        </nav>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+        <ul class="space-y-4 p-4">
+          <li>
+            <a href="index2.html" class="text-gray-700 hover:text-indigo-600"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="editor.html" class="text-gray-700 hover:text-indigo-600"
+              >Summarize Code</a
+            >
+          </li>
+          <li>
+            <a href="#about_us" class="text-gray-700 hover:text-indigo-600"
+              >About Us</a
+            >
+          </li>
+          <li>
+            <a href="doc.html" class="text-gray-700 hover:text-indigo-600"
+              >Documentation</a
+            >
+          </li>
+          <li>
+            <a
+              href="contact_form.html"
+              class="text-gray-700 hover:text-indigo-600"
+              >Contact</a
+            >
+          </li>
+          <li>
+            <a
+              href="sign_up.html"
+              class="bg-indigo-600 text-white px-4 py-2 rounded block text-center"
+              >Sign Up</a
+            >
+          </li>
+          <li>
+            <a
+              href="login.html"
+              class="bg-gray-600 text-white px-4 py-2 rounded block text-center"
+              >Login</a
+            >
+          </li>
+        </ul>
+      </div>
     </header>
 
-    <div class="login">
-        <div class="container">
-            <div class="wrapper">
-                <div class="title">
-                    <h5>LOGIN FORM</h5>
-                </div>
-                <form id="loginForm">
-                    <div class="row">
-                        <i class="fas fa-user"></i>
-                        <input type="text" id="username" placeholder="Email or Phone" required>
-                    </div>
-                    <div class="row">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" id="password" placeholder="Password" required>
-                    </div>
-                    <div class="pass"><a href="#">Forgot password?</a></div>
-                    <div class="row button">
-                        <input type="submit" value="Login">
-                    </div>
-                    <div class="signup-link">Not a member? <a href="#">Signup now</a></div>
-                </form>
-            </div>
+    <section
+      class="container mx-auto my-10 p-6 bg-white shadow-md rounded-md max-w-md"
+    >
+      <h2 class="text-2xl font-bold text-center mb-6">LOGIN FORM</h2>
+      <form id="loginForm">
+        <div class="mb-4">
+          <i class="fas fa-user text-gray-400"></i>
+          <input
+            type="text"
+            id="username"
+            placeholder="Email or Phone"
+            class="w-full p-2 border border-gray-300 rounded mt-1"
+            required
+          />
         </div>
-    </div>
+        <div class="mb-4">
+          <i class="fas fa-lock text-gray-400"></i>
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            class="w-full p-2 border border-gray-300 rounded mt-1"
+            required
+          />
+        </div>
+        <div class="mb-4 text-right">
+          <a href="#" class="text-indigo-500 hover:underline"
+            >Forgot password?</a
+          >
+        </div>
+        <div class="mb-4">
+          <input
+            type="submit"
+            value="Login"
+            class="w-full bg-indigo-500 text-white px-4 py-2 rounded cursor-pointer"
+          />
+        </div>
+        <div class="text-center">
+          <p class="text-gray-600">
+            Not a member?
+            <a href="#" class="text-indigo-500 hover:underline">Signup now</a>
+          </p>
+        </div>
+      </form>
+    </section>
 
-    <footer class="footer">
-        <ul class="social-icon">
-            <li class="social-icon__item"><a class="social-icon__link" href="#">
-                    <ion-icon name="logo-facebook"></ion-icon>
-                </a></li>
-            <li class="social-icon__item"><a class="social-icon__link" href="#">
-                    <ion-icon name="logo-twitter"></ion-icon>
-                </a></li>
-            <li class="social-icon__item"><a class="social-icon__link" href="#">
-                    <ion-icon name="logo-linkedin"></ion-icon>
-                </a></li>
-            <li class="social-icon__item"><a class="social-icon__link" href="#">
-                    <ion-icon name="logo-instagram"></ion-icon>
-                </a></li>
+    <footer class="bg-gray-800 py-8 text-white">
+      <div class="container mx-auto text-center">
+        <ul class="flex flex-wrap justify-center space-x-4 mb-4">
+          <li class="my-2">
+            <a class="social-icon__link" href="#"
+              ><ion-icon name="logo-facebook" class="text-2xl"></ion-icon
+            ></a>
+          </li>
+          <li class="my-2">
+            <a class="social-icon__link" href="#"
+              ><ion-icon name="logo-twitter" class="text-2xl"></ion-icon
+            ></a>
+          </li>
+          <li class="my-2">
+            <a class="social-icon__link" href="#"
+              ><ion-icon name="logo-linkedin" class="text-2xl"></ion-icon
+            ></a>
+          </li>
+          <li class="my-2">
+            <a class="social-icon__link" href="#"
+              ><ion-icon name="logo-instagram" class="text-2xl"></ion-icon
+            ></a>
+          </li>
         </ul>
-        <ul class="menu">
-            <li class="menu__item"><a class="menu__link" href="index2.html">Home</a></li>
-            <li class="menu__item"><a class="menu__link" href="editor.html">Code Summarization</a></li>
-            <li class="menu__item"><a class="menu__link" href="#about_us">About Us</a></li>
-            <li class="menu__item"><a class="menu__link" href="doc.html">Documentation</a></li>
-            <li class="menu__item"><a class="menu__link" href="contact_form.html">Contact</a></li>
+        <ul class="flex flex-wrap justify-center space-x-4 mb-4">
+          <li class="my-2">
+            <a
+              class="menu__link text-gray-300 hover:text-white"
+              href="index2.html"
+              >Home</a
+            >
+          </li>
+          <li class="my-2">
+            <a
+              class="menu__link text-gray-300 hover:text-white"
+              href="editor.html"
+              >Code Summarization</a
+            >
+          </li>
+          <li class="my-2">
+            <a
+              class="menu__link text-gray-300 hover:text-white"
+              href="#about_us"
+              >About Us</a
+            >
+          </li>
+          <li class="my-2">
+            <a class="menu__link text-gray-300 hover:text-white" href="doc.html"
+              >Documentation</a
+            >
+          </li>
+          <li class="my-2">
+            <a
+              class="menu__link text-gray-300 hover:text-white"
+              href="contact_form.html"
+              >Contact</a
+            >
+          </li>
         </ul>
-        <p>&copy;2024 Source Code Summarizer | All Rights Reserved</p>
+        <p>&copy;2024 Source Code Summarizer</p>
+
+        <p>All Rights Reserved</p>
+      </div>
     </footer>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
 
     <!-- Add the JavaScript code to handle the login -->
     <script>
-        document.getElementById("loginForm").addEventListener("submit", async function (event) {
-            event.preventDefault();
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
 
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
+          const username = document.getElementById("username").value;
+          const password = document.getElementById("password").value;
 
-            try {
-                const response = await fetch("http://localhost:8001/login", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ username, password })
-                });
+          try {
+            const response = await fetch("http://localhost:8001/login", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ username, password }),
+            });
 
-                if (!response.ok) {
-                    throw new Error("Login failed");
-                }
-
-                const result = await response.json();
-                alert(result.message);
-            } catch (error) {
-                alert(error.message);
+            if (!response.ok) {
+              throw new Error("Login failed");
             }
+
+            const result = await response.json();
+            alert(result.message);
+          } catch (error) {
+            alert(error.message);
+          }
         });
     </script>
-</body>
+    <script>
+      document.getElementById("menu-btn").addEventListener("click", () => {
+        document.getElementById("mobile-menu").classList.toggle("hidden");
+      });
 
+      document.querySelectorAll(".tab_btn").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document.querySelectorAll(".content").forEach((content) => {
+            content.classList.remove("active");
+          });
+          document.querySelectorAll(".tab_btn").forEach((btn) => {
+            btn.classList.remove("text-indigo-600");
+          });
+          tab.classList.add("text-indigo-600");
+          document
+            .querySelectorAll(".content")
+            [Array.from(tab.parentNode.children).indexOf(tab)].classList.add(
+              "active"
+            );
+        });
+      });
+    </script>
+  </body>
 </html>
