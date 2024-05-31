@@ -7,21 +7,18 @@
   <title>Text Editor</title>
   <!-- <link rel="stylesheet" href="style2.css"> -->
   <title>Source_Code_Summarizer</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <style>
-      /* Custom styles for the carousel */
-      .carousel-item {
-        display: none;
-      }
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <style>
+    /* Custom styles for the carousel */
+    .carousel-item {
+      display: none;
+    }
 
-      .carousel-item.active {
-        display: block;
-      }
-    </style>
-  
+    .carousel-item.active {
+      display: block;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -36,44 +33,24 @@
       <div class="hidden md:flex items-center space-x-4">
         <ul class="flex space-x-4">
           <li>
-            <a href="index2.html" class="text-gray-700 hover:text-indigo-600"
-              >Home</a
-            >
+            <a href="index2.html" class="text-gray-700 hover:text-indigo-600">Home</a>
           </li>
           <li>
-            <a href="editor.html" class="text-gray-700 hover:text-indigo-600"
-              >Summarize Code</a
-            >
+            <a href="editor.html" class="text-gray-700 hover:text-indigo-600">Summarize Code</a>
           </li>
           <li>
-            <a href="#about_us" class="text-gray-700 hover:text-indigo-600"
-              >About Us</a
-            >
+            <a href="#about_us" class="text-gray-700 hover:text-indigo-600">About Us</a>
           </li>
           <li>
-            <a href="doc.html" class="text-gray-700 hover:text-indigo-600"
-              >Documentation</a
-            >
+            <a href="doc.html" class="text-gray-700 hover:text-indigo-600">Documentation</a>
           </li>
           <li>
-            <a
-              href="contact_form.html"
-              class="text-gray-700 hover:text-indigo-600"
-              >Contact</a
-            >
+            <a href="contact_form.html" class="text-gray-700 hover:text-indigo-600">Contact</a>
           </li>
         </ul>
         <div class="flex space-x-4">
-          <a
-            href="sign_up.html"
-            class="bg-indigo-600 text-white px-4 py-2 rounded"
-            >Sign Up</a
-          >
-          <a
-            href="login.html"
-            class="bg-gray-600 text-white px-4 py-2 rounded"
-            >Login</a
-          >
+          <a href="sign_up.html" class="bg-indigo-600 text-white px-4 py-2 rounded">Sign Up</a>
+          <a href="login.html" class="bg-gray-600 text-white px-4 py-2 rounded">Login</a>
         </div>
       </div>
       <div class="md:hidden">
@@ -87,191 +64,101 @@
     <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
       <ul class="space-y-4 p-4">
         <li>
-          <a href="index2.html" class="text-gray-700 hover:text-indigo-600"
-            >Home</a
-          >
+          <a href="index2.html" class="text-gray-700 hover:text-indigo-600">Home</a>
         </li>
         <li>
-          <a href="editor.html" class="text-gray-700 hover:text-indigo-600"
-            >Summarize Code</a
-          >
+          <a href="editor.html" class="text-gray-700 hover:text-indigo-600">Summarize Code</a>
         </li>
         <li>
-          <a href="#about_us" class="text-gray-700 hover:text-indigo-600"
-            >About Us</a
-          >
+          <a href="#about_us" class="text-gray-700 hover:text-indigo-600">About Us</a>
         </li>
         <li>
-          <a href="doc.html" class="text-gray-700 hover:text-indigo-600"
-            >Documentation</a
-          >
+          <a href="doc.html" class="text-gray-700 hover:text-indigo-600">Documentation</a>
         </li>
         <li>
-          <a
-            href="contact_form.html"
-            class="text-gray-700 hover:text-indigo-600"
-            >Contact</a
-          >
+          <a href="contact_form.html" class="text-gray-700 hover:text-indigo-600">Contact</a>
         </li>
         <li>
-          <a
-            href="sign_up.html"
-            class="bg-indigo-600 text-white px-4 py-2 rounded block text-center"
-            >Sign Up</a
-          >
+          <a href="sign_up.html" class="bg-indigo-600 text-white px-4 py-2 rounded block text-center">Sign Up</a>
         </li>
         <li>
-          <a
-            href="login.html"
-            class="bg-gray-600 text-white px-4 py-2 rounded block text-center"
-            >Login</a
-          >
+          <a href="login.html" class="bg-gray-600 text-white px-4 py-2 rounded block text-center">Login</a>
         </li>
       </ul>
     </div>
   </header>
 
-  <section class="editor documentation container px-8 py-8  ">
-    <h1> SOURCE CODE <SPan>SUMMARIZER</SPan></h1>
 
-    <div class="wrapper ">
-        <div class="box flex">
-            <div class="left_content">
-                <div class="left_side_text">
-                    <nav>
-                        <ul>
-                            <li id="tab-summarizer" class="btn_tab active_tab"> CODE SUMMARIZER</li>
-                            <li id="tab-error" class="btn_tab ">ERROR DETECTION</li>
-                            <li id="tab-comment" class="btn_tab">COMMENT ANALYSIS</li>
-                            <li id="tab-customize" class="btn_tab">CUSTOMIZATION    </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <div class="right_content">
-                <div id="content-summarizer" class="content active">
-                    <textarea type="text" placeholder="Provide you code snippet to summarize!" class="query-input"></textarea>
-                    <div class="response-output"></div>
-                </div>
-                <div id="content-error" class="content hidden">
-                    <textarea type="text" placeholder="Provide your code to detect and resolve any errors! " class="query-input"></textarea>
-                    <div class="response-output"></div>
-                </div>
-                <div id="content-comment" class="content hidden">
-                    <textarea type="text" placeholder="Provide your code to analyze comments!" class="query-input"></textarea>
-                    <div class="response-output"></div>
-                </div>
-                <div id="content-customize" class="content hidden">
-                    <textarea type="text" placeholder="Provide me your code to customize your code!" class="query-input"></textarea>
-                    <div class="response-output"></div>
-                </div>
-            </div>
+  <section class="editor bg-gray-100 py-10">
+    <div class="container mx-auto">
+      <h1 class="text-3xl font-bold text-center mb-6">SOURCE CODE <span class="text-indigo-600">SUMMARIZER</span></h1>
+      <div class="flex flex-col md:flex-row">
+        <div class="md:w-1/4 mb-4 md:mb-0">
+          <nav class="bg-white shadow-md rounded p-4">
+            <ul>
+              <li id="tab-summarizer" class="btn_tab active_tab cursor-pointer py-2 px-4 bg-indigo-100">Code Summarizer</li>
+              <li id="tab-error" class="btn_tab cursor-pointer py-2 px-4">Error Detection</li>
+              <li id="tab-comment" class="btn_tab cursor-pointer py-2 px-4">Comment Analysis</li>
+              <li id="tab-customize" class="btn_tab cursor-pointer py-2 px-4">Customization</li>
+            </ul>
+          </nav>
         </div>
-    </div>
-    
-    <!-- <div class="wrapper">
-      <div class="box flex">
-          <div class="left_content">
-              <div class="left_side_text">
-                <nav>
-                    <ul>
-                        <li id="tab-summarizer" class="btn_tab">Code Summarizer</li>
-                        <li id="tab-error" class="btn_tab">Error Detection</li>
-                        <li id="tab-comment" class="btn_tab">Comment Analysis</li>
-                        <li id="tab-customize" class="btn_tab">Customization</li>
-                    </ul>
-                </nav>
-              </div>
+        <div class="md:w-3/4 p-4 bg-white shadow-md rounded">
+          <div id="content-summarizer" class="content active">
+            <textarea type="text" placeholder="Provide you code snippet to summarize!"
+              class="query-input  w-full p-2 border border-gray-300 rounded mb-4"></textarea>
+            <div class="response-output"></div>
           </div>
-          <div class="right_content">
-                <div id="content-summarizer" class="content hidden">
-                    <input type="text" placeholder="Please ask me anything" class="query-input">
-                    <div class="response-output"></div>
-                  
-                </div>
-                <div id="content-error" class="content hidden">
-                    <input type="text" placeholder="Please ask me anything" class="query-input">
-                    <div class="response-output"></div>
-                    
-                </div>
-                <div id="content-comment" class="content hidden">
-                    <input type="text" placeholder="Please ask me anything" class="query-input">
-                    <div class="response-output"></div>
-                    
-                </div>
-                <div id="content-customize" class="content hidden">
-                    <input type="text" placeholder="Please ask me anything" class="query-input">
-                    <div class="response-output"></div>
-                    
-                </div>
-
-            </div>
-
-        </div>
-
-    </div> -->
-</div>
-
+          <div id="content-error" class="content hidden">
+            <textarea type="text" placeholder="Provide your code to detect and resolve any errors! "
+              class="query-input w-full p-2 border border-gray-300 rounded mb-4"></textarea>
+            <div class="response-output"></div>
+          </div>
+          <div id="content-comment" class="content hidden">
+            <textarea type="text" placeholder="Provide your code to analyze comments!"
+              class="query-input w-full p-2 border border-gray-300 rounded mb-4"></textarea>
+            <div class="response-output"></div>
+          </div>
+          <div id="content-customize" class="content hidden">
+            <textarea type="text" placeholder="Provide me your code to customize your code!"
+              class="query-input w-full p-2 border border-gray-300 rounded mb-4"></textarea>
+            <div class="response-output"></div>
+          </div>
+      </div>
+    </div>
   </section>
-
 
   <footer class="bg-gray-800 py-8 text-white">
     <div class="container mx-auto text-center">
       <ul class="flex flex-wrap justify-center space-x-4 mb-4">
         <li class="my-2">
-          <a class="social-icon__link" href="#"
-            ><ion-icon name="logo-facebook" class="text-2xl"></ion-icon
-          ></a>
+          <a class="social-icon__link" href="#"><ion-icon name="logo-facebook" class="text-2xl"></ion-icon></a>
         </li>
         <li class="my-2">
-          <a class="social-icon__link" href="#"
-            ><ion-icon name="logo-twitter" class="text-2xl"></ion-icon
-          ></a>
+          <a class="social-icon__link" href="#"><ion-icon name="logo-twitter" class="text-2xl"></ion-icon></a>
         </li>
         <li class="my-2">
-          <a class="social-icon__link" href="#"
-            ><ion-icon name="logo-linkedin" class="text-2xl"></ion-icon
-          ></a>
+          <a class="social-icon__link" href="#"><ion-icon name="logo-linkedin" class="text-2xl"></ion-icon></a>
         </li>
         <li class="my-2">
-          <a class="social-icon__link" href="#"
-            ><ion-icon name="logo-instagram" class="text-2xl"></ion-icon
-          ></a>
+          <a class="social-icon__link" href="#"><ion-icon name="logo-instagram" class="text-2xl"></ion-icon></a>
         </li>
       </ul>
       <ul class="flex flex-wrap justify-center space-x-4 mb-4">
         <li class="my-2">
-          <a
-            class="menu__link text-gray-300 hover:text-white"
-            href="index2.html"
-            >Home</a
-          >
+          <a class="menu__link text-gray-300 hover:text-white" href="index2.html">Home</a>
         </li>
         <li class="my-2">
-          <a
-            class="menu__link text-gray-300 hover:text-white"
-            href="editor.html"
-            >Code Summarization</a
-          >
+          <a class="menu__link text-gray-300 hover:text-white" href="editor.html">Code Summarization</a>
         </li>
         <li class="my-2">
-          <a
-            class="menu__link text-gray-300 hover:text-white"
-            href="#about_us"
-            >About Us</a
-          >
+          <a class="menu__link text-gray-300 hover:text-white" href="#about_us">About Us</a>
         </li>
         <li class="my-2">
-          <a class="menu__link text-gray-300 hover:text-white" href="doc.html"
-            >Documentation</a
-          >
+          <a class="menu__link text-gray-300 hover:text-white" href="doc.html">Documentation</a>
         </li>
         <li class="my-2">
-          <a
-            class="menu__link text-gray-300 hover:text-white"
-            href="contact_form.html"
-            >Contact</a
-          >
+          <a class="menu__link text-gray-300 hover:text-white" href="contact_form.html">Contact</a>
         </li>
       </ul>
       <p>&copy;2024 Source Code Summarizer</p>
@@ -301,11 +188,28 @@
         tab.classList.add("text-indigo-600");
         document
           .querySelectorAll(".content")
-          [Array.from(tab.parentNode.children).indexOf(tab)].classList.add(
-            "active"
-          );
+        [Array.from(tab.parentNode.children).indexOf(tab)].classList.add(
+          "active"
+        );
       });
     });
+
+    document.querySelectorAll(".btn_tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".content").forEach((content) => {
+          content.classList.remove("active");
+          content.classList.add("hidden"); // Hide all content divs
+        });
+        document.querySelectorAll(".btn_tab").forEach((btn) => {
+          btn.classList.remove("bg-indigo-100");
+        });
+        tab.classList.add("bg-indigo-100");
+        const index = Array.from(tab.parentNode.children).indexOf(tab);
+        document.querySelectorAll(".content")[index].classList.add("active");
+        document.querySelectorAll(".content")[index].classList.remove("hidden"); // Show the corresponding content
+      });
+    });
+
   </script>
 </body>
 
