@@ -15,10 +15,7 @@ from langchain_core.prompts import ChatPromptTemplate
 # from langchain_openai import ChatOpenAI
 
 
-# class MyCustomHandler(BaseCallbackHandler):
-#     def on_llm_new_token(self, token: str, **kwargs) -> None:
-#         print(f"My custom handler, token: {token}")
-#
+
 
 
 def create_specified_query(data: dict):

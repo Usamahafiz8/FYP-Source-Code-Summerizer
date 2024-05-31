@@ -103,8 +103,8 @@ def signup(user: UserCreate, db: Session = Depends(get_db)):
         )
         db.add(new_user)
         db.commit()
-        print('User created successfully')
-        return {"message": "User created successfully"}
+        
+        return JSONResponse(content={"message": "User created successfully"})
     else:
         return JSONResponse(content={"message": "Password does not match."})
 
@@ -124,7 +124,7 @@ def login(login_request: UserLogin, db: Session = Depends(get_db)):
     if not user:
         raise HTTPException(status_code=401, detail="Invalid username or password")
     
-    return JSONResponse(content={"message": "Login successful"}) 
+    return JSONResponse(content={"message": "Login successful"})
 
 
 # --------------------------------chatbot API's----------------
@@ -137,18 +137,21 @@ async def websocket_endpoint(websocket: WebSocket):
             data = await websocket.receive_text()
             print("FRONT END :", data)
             data = json.loads(data)  # Parse the JSON data received
+            
             tab_id = data['tabId']
             message = data['message']
+
             template = create_specified_query(data)
             prompt = PromptTemplate.from_template(template)
+            
             conversation_chain = LLMChain(
                                     llm=llm,
                                     prompt=prompt,
                                     verbose=True,
                                     memory=memory
                                 )
-            print('*'*50)
-            print(f"Received from {tab_id}: {message}")
+            # print('*'*50)
+            # print(f"Received from {tab_id}: {message}")
             await websocket.send_json({'text': 'Processing...', 'overwrite': True})
             # websocket.send_text(data)
             # Process the data through the LLM
@@ -160,7 +163,7 @@ async def websocket_endpoint(websocket: WebSocket):
                     # include_names=["ChatOpenAI"],
                     version = 'v1'
             ):
-                print('-_-_-', event)
+                # print('-_-_-', event)
                 kind = event["event"]
                 
                 if kind == "on_llm_stream":
@@ -181,4 +184,4 @@ async def websocket_endpoint(websocket: WebSocket):
 if __name__ == "__main__":
     import uvicorn
     
-    uvicorn.run(app, host = "localhost", port = 8001)
+    uvicorn.run(app, host = "localhost", port = 8006)
