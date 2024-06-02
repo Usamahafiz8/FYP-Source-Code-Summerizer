@@ -42,7 +42,7 @@ app.add_middleware(
     allow_headers = ["*"],
 )
 llm = Ollama(
-    model = "llama3", callback_manager = CallbackManager([MyCustomHandler()])
+    model = "phi3", callback_manager = CallbackManager([MyCustomHandler()])
 )
 
 
@@ -106,7 +106,7 @@ def signup(user: UserCreate, db: Session = Depends(get_db)):
         print('User created successfully')
         return {"message": "User created successfully"}
     else:
-        return JSONResponse(content={"message": "Password does not match."})
+        raise HTTPException(status_code=400, detail="Passwrod does not match.")
 
 
 @app.post("/login")
@@ -135,7 +135,7 @@ async def websocket_endpoint(websocket: WebSocket):
     try:
         while True:
             data = await websocket.receive_text()
-            print("FRONT END :", data)
+            # print("FRONT END :", data)
             data = json.loads(data)  # Parse the JSON data received
             tab_id = data['tabId']
             message = data['message']
@@ -148,7 +148,7 @@ async def websocket_endpoint(websocket: WebSocket):
                                     memory=memory
                                 )
             print('*'*50)
-            print(f"Received from {tab_id}: {message}")
+            # print(f"Received from {tab_id}: {message}")
             await websocket.send_json({'text': 'Processing...', 'overwrite': True})
             # websocket.send_text(data)
             # Process the data through the LLM

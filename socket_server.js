@@ -1,19 +1,19 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const webSocketURL = 'ws://localhost:8006/chat'; // Adjust this URL as necessary
-    let webSocket = new WebSocket(webSocketURL);
+// document.addEventListener("DOMContentLoaded", function() {
+//     const webSocketURL = 'ws://localhost:8006/chat'; // Adjust this URL as necessary
+//     let webSocket = new WebSocket(webSocketURL);
 
-    webSocket.onmessage = function(event) {
-        const data = JSON.parse(event.data);
-        const activeContentDiv = document.querySelector('.content.active .response-output');
-        console.log("data: ", data, data.overwrite, data.text)
-        if (data.overwrite) {
-            console.log('if condition...')
-            activeContentDiv.innerHTML = data.text;  // Use innerHTML since content is now HTML
-        } else {
-            console.log('else condition...')
-            activeContentDiv.innerHTML += data.text;
-        }
-    };
+//     webSocket.onmessage = function(event) {
+//         const data = JSON.parse(event.data);
+//         const activeContentDiv = document.querySelector('.content.active .response-output');
+//         console.log("data: ", data, data.overwrite, data.text)
+//         if (data.overwrite) {
+//             console.log('if condition...')
+//             activeContentDiv.innerHTML = data.text;  // Use innerHTML since content is now HTML
+//         } else {
+//             console.log('else condition...')
+//             activeContentDiv.innerHTML += data.text;
+//         }
+//     };
     
 
 
@@ -43,13 +43,13 @@ document.addEventListener("DOMContentLoaded", function() {
 //         // Set the innerHTML to display formatted content
 //         activeContentDiv.innerHTML = data.text;
 //     };
-    webSocket.onopen = function(event) {
-        console.log("Connection opened");
-    };
+    // webSocket.onopen = function(event) {
+    //     console.log("Connection opened");
+    // };
 
-    webSocket.onerror = function(event) {
-        console.error("WebSocket Error:", event);
-    };
+    // webSocket.onerror = function(event) {
+    //     console.error("WebSocket Error:", event);
+    // };
 
     // webSocket.onmessage = function(event) {
     //     const data = JSON.parse(event.data);
@@ -61,22 +61,22 @@ document.addEventListener("DOMContentLoaded", function() {
     //     }
     // };
 
-    document.querySelectorAll('.query-input').forEach(input => {
-        input.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && e.shiftKey) {
-                const tabId = this.closest('.content').id;
-                const message = this.value;
-                webSocket.send(JSON.stringify({ tabId, message }));
-                this.value = message;
-                //this.value = ""; // Clear the input field after sending
-            }
-        });
-    });
+//     document.querySelectorAll('.query-input').forEach(input => {
+//         input.addEventListener('keypress', function(e) {
+//             if (e.key === 'Enter' && e.shiftKey) {
+//                 const tabId = this.closest('.content').id;
+//                 const message = this.value;
+//                 webSocket.send(JSON.stringify({ tabId, message }));
+//                 this.value = message;
+//                 //this.value = ""; // Clear the input field after sending
+//             }
+//         });
+//     });
 
-    webSocket.onclose = function(event) {
-        console.log("WebSocket is closed now.");
-    };
-});
+//     webSocket.onclose = function(event) {
+//         console.log("WebSocket is closed now.");
+//     };
+// });
 
 
 
@@ -141,3 +141,60 @@ document.addEventListener("DOMContentLoaded", function() {
 //         });
 //     });
 // });
+// --------------========================================================================-------------------
+
+// new socket server
+
+document.addEventListener("DOMContentLoaded", function () {
+    const webSocketURL = 'ws://localhost:8006/chat'; // Adjust this URL as necessary
+    let webSocket = new WebSocket(webSocketURL);
+
+    webSocket.onmessage = function (event) {
+        const data = JSON.parse(event.data);
+        const activeContentDiv = document.querySelector('.content.active .response-output');
+        console.log("data: ", data, data.overwrite, data.text)
+        if (data.overwrite) {
+            console.log('if condition...')
+            activeContentDiv.innerHTML = data.text;  // Use innerHTML since content is now HTML
+        } else {
+            console.log('else condition...')
+            activeContentDiv.innerHTML += data.text;
+        }
+    };
+
+    webSocket.onopen = function (event) {
+        console.log("Connection opened");
+    };
+
+    webSocket.onerror = function (event) {
+        console.error("WebSocket Error:", event);
+    };
+
+    webSocket.onclose = function (event) {
+        console.log("WebSocket is closed now.");
+    };
+
+    document.querySelectorAll('.query-input').forEach(input => {
+        input.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault(); // Prevent the default behavior (new line)
+                const tabId = this.closest('.content').id;
+                const message = this.value;
+                webSocket.send(JSON.stringify({ tabId, message }));
+                // Optionally clear the input field after sending
+                // this.value = "";
+            }
+        });
+    });
+
+    document.querySelectorAll('button[id$="-btn"]').forEach(button => {
+        button.addEventListener('click', function () {
+            const textarea = this.previousElementSibling;
+            const tabId = textarea.closest('.content').id;
+            const message = textarea.value;
+            webSocket.send(JSON.stringify({ tabId, message }));
+            // Optionally clear the input field after sending
+            // textarea.value = "";
+        });
+    });
+});

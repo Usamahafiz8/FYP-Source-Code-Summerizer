@@ -288,14 +288,15 @@
                     body: JSON.stringify(userData)
                 });
                 console.log("response: ", response)
-                console.log("resp.msg: ", response.message)
-                console.log('result json = ', response.json())
+                // console.log("resp.msg: ", response.message)
+                // console.log('result json = ', response.json())
                 const result = await response.json();
                 console.log("res: ", result)
                 if (result.message) {
                     
-                    alert(result.message);
-                    alert("Successfull");
+                    // alert(result.message);c  
+                    // alert("Successfull");
+                    window.location.href = "editor.html";
                 } 
 
                 else {

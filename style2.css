@@ -186,12 +186,14 @@
   min-height: 50px; /* Minimum height for visibility */
   border-radius: 5px;
   overflow-y: auto; /* Allows scrolling for longer responses */
-  max-height: 340px; /* Maximum height before scrolling */
+  max-height: 200px; /* Maximum height before scrolling */
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* Aligns content to the top */
   width: 100%; /* Ensures the box uses the full width of its container */
   box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+
+
 }
 
 
@@ -524,8 +526,8 @@ width: 56px;
   border-radius: 6px;
   padding: 20px 60px 30px 40px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-
 }
+
 .container .content{
   display: flex;
   align-items: center;
