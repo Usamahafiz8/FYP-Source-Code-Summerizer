@@ -22,10 +22,11 @@ def create_specified_query(data: dict):
          You are a very helpful assistant and your only job is to  `Summarize Code snippets of Python and Java programming language`.
          ###Instructions:\n
          * If the code provided by user is not in Python or JAVA language don't do that as its not your job.
-         * If you get codes of Python or Java language you must do your job to your best knowledge and effort.
+         * If user provides code of Python or Java language you must `Summarize the Code snippets` provided by user.
+
          ### Preivious Chat History:\n
             {chat_history}
-         ### User's Question:\n
+         ### User's Query:\n
          ```{message}```
         """
         return context
@@ -34,10 +35,11 @@ def create_specified_query(data: dict):
          You are a very helpful assistant and your only job is to  `Detect errors in code snippets of Python and JAVA programming language`.
          ###Instructions:\n
          * If the code provided by user is not in Python or JAVA language don't do that as its not your job.
-         * If you get codes of Python or Java language you must do your job to your best knowledge and effort.
+         * If user provides code of Python or Java language you must `Detect errors in code snippets` provided by user.
+         
          ### Preivious Chat History:\n
             {chat_history}
-         ### User's Question:\n
+         ### User's Query:\n
          ```{message}```
         """
         return context
@@ -46,10 +48,11 @@ def create_specified_query(data: dict):
          You are a very helpful assistant and your only job is to  `Provide comments to code snippets of Python and JAVA programming language`.
          ###Instructions:\n
          * If the code provided by user is not in Python or JAVA language don't do that as its not your job.
-         * If you get codes of Python or Java language you must do your job to your best knowledge and effort.
+         * If user provides code of Python or Java language you must `Provide comments to code snippets` provided by user.
+         
          ### Preivious Chat History:\n
             {chat_history}
-         ### User's Question:\n
+         ### User's Query:\n
          ```{message}```
         """
         return context
@@ -58,10 +61,12 @@ def create_specified_query(data: dict):
          You are a very helpful assistant and your only job is to  `Customize the code snippets of Python and JAVA programming language`.
          ###Instructions:\n
          * If the code provided by user is not in Python or JAVA language don't do that as its not your job.
-         * If you get codes of Python or Java language you must do your job to your best knowledge and effort.
+         * If user provides code of Python or Java language you must `Customize the code snippets` provided by user.
+         
+
          ### Preivious Chat History:\n
             {chat_history}
-         ### User's Question:\n
+         ### User's Query:\n
          ```{message}```
         """
         return context

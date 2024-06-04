@@ -49,7 +49,11 @@ llm = Ollama(
 
 
 # Notice that we need to align the `memory_key`
-memory = ConversationBufferMemory(memory_key="chat_history")
+summarizer_memory = ConversationBufferMemory(memory_key="chat_history")
+comment_memory = ConversationBufferMemory(memory_key="chat_history")
+error_memory = ConversationBufferMemory(memory_key="chat_history")
+customize_memory = ConversationBufferMemory(memory_key="chat_history")
+
 
 
 #--------------------------Database API's--------------------
@@ -135,18 +139,47 @@ async def websocket_endpoint(websocket: WebSocket):
     try:
         while True:
             data = await websocket.receive_text()
-            # print("FRONT END :", data)
+            print("FRONT END :", data)
             data = json.loads(data)  # Parse the JSON data received
-            tab_id = data['tabId']
-            message = data['message']
+            # tab_id = data['tabId']
+
             template = create_specified_query(data)
             prompt = PromptTemplate.from_template(template)
-            conversation_chain = LLMChain(
+            if data['tabId'] == 'content-comment':
+                conversation_chain = LLMChain(
                                     llm=llm,
                                     prompt=prompt,
                                     verbose=True,
-                                    memory=memory
+                                    memory=comment_memory
                                 )
+            if data['tabId'] == 'content-error':
+                conversation_chain = LLMChain(
+                                    llm=llm,
+                                    prompt=prompt,
+                                    verbose=True,
+                                    memory=error_memory
+                                )
+            if data['tabId'] == 'content-summarizer':
+                conversation_chain = LLMChain(
+                                    llm=llm,
+                                    prompt=prompt,
+                                    verbose=True,
+                                    memory=summarizer_memory
+                                )
+            if data['tabId'] == 'content-customize':
+                conversation_chain = LLMChain(
+                                    llm=llm,
+                                    prompt=prompt,
+                                    verbose=True,
+                                    memory=customize_memory
+                                )
+            
+            # conversation_chain = LLMChain(
+            #                         llm=llm,
+            #                         prompt=prompt,
+            #                         verbose=True,
+            #                         memory=memory
+            #                     )
             print('*'*50)
             # print(f"Received from {tab_id}: {message}")
             await websocket.send_json({'text': 'Processing...', 'overwrite': True})
@@ -156,7 +189,7 @@ async def websocket_endpoint(websocket: WebSocket):
             
             async for event in conversation_chain.astream_events(
                     # prompt,
-                    {'message':message},
+                    {'message':data['message']},
                     # include_names=["ChatOpenAI"],
                     version = 'v1'
             ):
